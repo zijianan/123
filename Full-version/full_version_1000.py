@@ -92,13 +92,13 @@ def create_inception_embedding(grayscaled_rgb):
 
 # Image transformer
 datagen = ImageDataGenerator(
-        shear_range=0.2,
-        zoom_range=0.2,
-        rotation_range=20,
+        shear_range=0.4,
+        zoom_range=0.4,
+        rotation_range=40,
         horizontal_flip=True)
 
 #Generate training data
-batch_size = 10
+batch_size = 20
 
 def image_a_b_gen(batch_size):
     for batch in datagen.flow(Xtrain, batch_size=batch_size):
@@ -112,8 +112,9 @@ def image_a_b_gen(batch_size):
 
 
 #Train model      
+model.add(Dropout(0.5))
 model.compile(optimizer='adam', loss='mse')
-model.fit_generator(image_a_b_gen(batch_size), epochs=1000, steps_per_epoch=1)
+model.fit_generator(image_a_b_gen(batch_size), epochs=5000, steps_per_epoch=1)
 
 
 # In[10]:
