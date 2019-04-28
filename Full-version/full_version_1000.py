@@ -114,7 +114,7 @@ def image_a_b_gen(batch_size):
 #Train model      
 # model.add(Dropout(0.5))
 model.compile(optimizer='adam', loss='mse')
-model.fit_generator(image_a_b_gen(batch_size), epochs=5000, steps_per_epoch=1)
+model.fit_generator(image_a_b_gen(batch_size), epochs=4000, steps_per_epoch=1)
 
 
 # In[10]:
