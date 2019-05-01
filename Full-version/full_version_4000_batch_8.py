@@ -98,7 +98,7 @@ datagen = ImageDataGenerator(
         horizontal_flip=True)
 
 #Generate training data
-batch_size = 10
+batch_size = 8
 
 def image_a_b_gen(batch_size):
     for batch in datagen.flow(Xtrain, batch_size=batch_size):
@@ -113,7 +113,7 @@ def image_a_b_gen(batch_size):
 
 #Train model      
 model.compile(optimizer='adam', loss='mse')
-model.fit_generator(image_a_b_gen(batch_size), epochs=10, steps_per_epoch=1)
+model.fit_generator(image_a_b_gen(batch_size), epochs=4000, steps_per_epoch=1)
 
 
 # In[10]:
