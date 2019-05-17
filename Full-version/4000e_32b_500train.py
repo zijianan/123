@@ -30,7 +30,7 @@ import tensorflow as tf
 
 # Get images
 X = []
-for filename in os.listdir('Train/'):
+for filename in os.listdir('Train/Train_504'):
     X.append(img_to_array(load_img('Train/'+filename)))
 X = np.array(X, dtype=float)
 Xtrain = 1.0/255*X
@@ -121,7 +121,7 @@ model.fit_generator(image_a_b_gen(batch_size), epochs=4000, steps_per_epoch=1)
 model.save('my_model.h5')
 
 color_me = []
-for filename in os.listdir('Test/'):
+for filename in os.listdir('Test/Test'):
     color_me.append(img_to_array(load_img('Test/'+filename)))
 color_me = np.array(color_me, dtype=float)
 gray_me = gray2rgb(rgb2gray(1.0/255*color_me))
