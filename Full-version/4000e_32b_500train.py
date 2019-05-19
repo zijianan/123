@@ -98,7 +98,7 @@ datagen = ImageDataGenerator(
         horizontal_flip=True)
 
 #Generate training data
-batch_size = 32
+batch_size = 128
 
 def image_a_b_gen(batch_size):
     for batch in datagen.flow(Xtrain, batch_size=batch_size):
@@ -114,11 +114,11 @@ def image_a_b_gen(batch_size):
 #Train model      
 # model.add(Dropout(0.5))
 model.compile(optimizer='rmsprop', loss='mse')
-model.fit_generator(image_a_b_gen(batch_size), epochs=4000, steps_per_epoch=1)
+model.fit_generator(image_a_b_gen(batch_size), epochs=4000, steps_per_epoch=4)
 
 
 # In[10]:
-model.save('my_model.h5')
+model.save('final_model.h5')
 
 color_me = []
 for filename in os.listdir('Test/Test'):
